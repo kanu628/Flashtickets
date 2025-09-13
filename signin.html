@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In / Sign Up - FlashTicket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">FlashTicket 🎟️</div>
+    <div class="menu">
+      <button id="menuBtn">⋮</button>
+      <ul id="menuList" class="hidden">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="ticket.html">Book Tickets</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="signin.html">Sign In / Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="form-container">
+    <h2>Sign In / Sign Up</h2>
+
+    <!-- Step 1: Enter Email or Phone -->
+    <form id="step1Form">
+      <label for="userInput">Email / Phone Number</label>
+      <input type="text" id="userInput" placeholder="Enter your email or phone number">
+      <button type="submit">Continue</button>
+    </form>
+
+    <!-- Step 2: Enter Verification Code -->
+    <form id="step2Form" style="display:none;">
+      <label for="code">Verification Code</label>
+      <input type="text" id="code" placeholder="Enter the code sent to you">
+      <button type="submit">Verify</button>
+      <p style="margin-top:10px; text-align:center;">
+        Didn’t get the code? <a href="#" id="resendCode">Resend</a>
+      </p>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const step1Form = document.getElementById("step1Form");
+    const step2Form = document.getElementById("step2Form");
+    const userInput = document.getElementById("userInput");
+    const resendLink = document.getElementById("resendCode");
+
+    step1Form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const input = userInput.value.trim();
+
+      if (input === "") {
+        alert("Please enter your Email or Phone Number.");
+        return;
+      }
+
+      alert("📩 A verification code has been sent to: " + input);
+
+      step1Form.style.display = "none";
+      step2Form.style.display = "block";
+    });
+
+    step2Form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const code = document.getElementById("code").value.trim();
+
+      if (code === "") {
+        alert("Please enter the verification code.");
+        return;
+      }
+
+      if (code === "123456") {
+        alert("✅ Verification successful! Welcome to FlashTicket.");
+      } else {
+        alert("❌ Incorrect code. Try again.");
+      }
+    });
+
+    resendLink.addEventListener("click", function(e) {
+      e.preventDefault();
+      alert("📩 A new verification code has been sent!");
+    });
+  </script>
+</body>
+</html>

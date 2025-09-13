@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashTicket – Book Your Tickets</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2f3640;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .event-card {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 80%;
+    }
+    h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .location {
+      color: #e74c3c;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      padding: 8px;
+      background: #f1f2f6;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      background: #e84118;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c23616;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+    .close {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    input {
+      margin: 10px 0;
+      padding: 8px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    /* Success Message */
+    .success {
+      display: none;
+      background: #2ecc71;
+      color: white;
+      padding: 15px;
+      margin: 20px auto;
+      width: 60%;
+      text-align: center;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>🎟️ FlashTicket – Book Your Tickets</header>
+
+  <!-- Success Message -->
+  <div class="success" id="successMsg">✅ Ticket booked successfully!</div>
+
+  <!-- Event 1 -->
+  <div class="event-card">
+    <h2>Hawassa DStv</h2>
+    <p class="location">📍 Location: Techno Campus</p>
+    <h3>Matches:</h3>
+    <ul>
+      <li>Man United vs Arsenal – 10 Birr <button onclick="openModal('Man United vs Arsenal')">Book Now</button></li>
+      <li>Man City vs Liverpool – 10 Birr <button onclick="openModal('Man City vs Liverpool')">Book Now</button></li>
+    </ul>
+  </div>
+
+  <!-- Event 2 -->
+  <div class="event-card">
+    <h2>Ethiopia Premier League</h2>
+    <p class="location">📍 Location: Hawassa Stadium</p>
+    <h3>Matches:</h3>
+    <ul>
+      <li>Ethiopia Buna FC vs Saint George FC – 10 Birr <button onclick="openModal('Ethiopia Buna FC vs Saint George FC')">Book Now</button></li>
+    </ul>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="eventName">Event Payment</h3>
+      <p>Enter your details to book:</p>
+      <input type="text" id="userName" placeholder="Your Name">
+      <input type="email" id="userEmail" placeholder="Your Email">
+      <input type="number" id="userPhone" placeholder="Phone Number">
+      <button onclick="processPayment()">Proceed to Pay (Placeholder)</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(eventName) {
+      document.getElementById("eventName").innerText = eventName + " – Payment";
+      document.getElementById("paymentModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("paymentModal").style.display = "none";
+    }
+    function processPayment() {
+      // Hide modal
+      document.getElementById("paymentModal").style.display = "none";
+      // Show success message
+      const msg = document.getElementById("successMsg");
+      msg.style.display = "block";
+      // Hide message after 3 seconds
+      setTimeout(() => { msg.style.display = "none"; }, 3000);
+    }
+  </script>
+</body>
+</html>
