@@ -1,6 +1,14 @@
-const menuBtn = document.getElementById("menuBtn");
-const menuList = document.getElementById("menuList");
+// Fade-in on scroll
+document.addEventListener("DOMContentLoaded", () => {
+  const fadeEls = document.querySelectorAll(".fade-in");
 
-menuBtn.addEventListener("click", () => {
-  menuList.classList.toggle("hidden");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeEls.forEach(el => observer.observe(el));
 });

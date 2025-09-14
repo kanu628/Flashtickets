@@ -1,64 +1,12 @@
-/* General Body */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
 }
 
-/* Navbar */
-nav {
-  background: #2f3640;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
 }
 
-.logo {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-/* Three Dots Menu */
-.menu button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.menu ul {
-  position: absolute;
-  right: 20px;
-  top: 50px;
-  background: #2f3640;
-  list-style: none;
-  padding: 10px 0;
-  margin: 0;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  width: 180px;
-  text-align: left;
-}
-
-.menu ul li {
-  margin: 0;
-}
-
-.menu ul li a {
-  display: block;
-  padding: 10px 15px;
-  color: white;
-  text-decoration: none;
-}
-
-.menu ul li a:hover {
-  background: #40739e;
-}
-
-.hidden {
-  display: none;
+header {
+  background: linear-gradient(135deg, #007bff, #6610f2);
 }

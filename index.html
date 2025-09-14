@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>FlashTicket</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashTickets 🎟️</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">FlashTicket 🎟️</div>
-    <div class="menu">
-      <button id="menuBtn">⋮</button>
-      <ul id="menuList" class="hidden">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="ticket.html">Book Tickets</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="signin.html">Sign In / Sign Up</a></li>
-      </ul>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">FlashTickets 🎟️</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="ticket.html">Tickets</a></li>
+          <li class="nav-item"><a class="nav-link" href="signin.html">Sign In</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header>
-    <h1>Welcome to FlashTicket 🎟️</h1>
-    <p>Fast & Easy Ticket Booking for Your Favorite Events</p>
-    <a class="btn" href="events.html">See Events</a>
+  <!-- Hero -->
+  <header class="bg-primary text-white text-center py-5">
+    <h1>Welcome to FlashTickets 🎉</h1>
+    <p>Your one-stop platform for events & tickets</p>
+    <a href="events.html" class="btn btn-light btn-lg mt-3">Browse Events</a>
   </header>
 
-  <script src="script.js"></script>
+  <!-- Footer -->
+  <footer class="bg-dark text-center text-white py-3 mt-5">
+    <p>&copy; 2025 FlashTickets. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
