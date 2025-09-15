@@ -1,70 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In / Sign Up - FlashTickets</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign In / Sign Up — FlashTickets</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f4f6f9; font-family: Inter, Arial, sans-serif; }
+    .card { max-width:420px; margin:auto; }
+    #statusMsg { min-height:1.2rem; }
+    .muted { font-size:0.85rem; color:#6c757d; }
+  </style>
 </head>
-<body class="bg-light">
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-5">
-        <div class="card shadow-lg rounded-4">
-          <div class="card-body p-4">
-            <h3 class="text-center mb-4">FlashTickets 🎟️</h3>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email or Phone</label>
-              <input type="text" id="email" class="form-control" placeholder="Enter email or phone">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" id="password" class="form-control" placeholder="Enter password">
-            </div>
-            <div class="d-grid gap-2">
-              <button class="btn btn-primary" onclick="signUp()">Sign Up</button>
-              <button class="btn btn-success" onclick="signIn()">Sign In</button>
-            </div>
-            <p id="status" class="text-center mt-3 text-muted"></p>
-          </div>
+<body>
+  <div class="vh-100 d-flex align-items-center">
+    <div class="card shadow p-4 w-100">
+      <h3 class="text-center mb-3">Sign In / Sign Up</h3>
+
+      <form id="authForm" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input id="email" type="email" class="form-control" placeholder="you@example.com" required>
         </div>
-      </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password (min 6 chars)</label>
+          <input id="password" type="password" class="form-control" placeholder="password" required minlength="6">
+        </div>
+
+        <div class="d-grid gap-2">
+          <button id="signInBtn" type="submit" class="btn btn-primary">Sign In</button>
+          <button id="signUpBtn" type="button" class="btn btn-outline-secondary">Sign Up (create account)</button>
+        </div>
+      </form>
+
+      <div id="statusMsg" class="text-center mt-3 muted"></div>
+      <hr>
+      <div class="small text-muted text-center">Open DevTools → Console to see logs (Ctrl+Shift+I).</div>
     </div>
   </div>
 
-  <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCK4kY6WtC9awbhJ5NSKY_nTXubVQ0WZ0U",
-      authDomain: "flashtickets-bce18.firebaseapp.com",
-      projectId: "flashtickets-bce18",
-      storageBucket: "flashtickets-bce18.appspot.com",
-      messagingSenderId: "393195469271",
-      appId: "1:393195469271:web:cd18270c4f5d71e5983392",
-      measurementId: "G-C89H23X7YS"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    window.signUp = function() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => document.getElementById("status").innerText = "✅ Sign Up successful!")
-        .catch(err => document.getElementById("status").innerText = "❌ " + err.message);
-    }
-
-    window.signIn = function() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => document.getElementById("status").innerText = "✅ Sign In successful!")
-        .catch(err => document.getElementById("status").innerText = "❌ " + err.message);
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- MUST be type="module" so import statements work -->
+  <script type="module" src="script.js" defer></script>
 </body>
 </html>
